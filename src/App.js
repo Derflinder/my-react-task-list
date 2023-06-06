@@ -6,7 +6,7 @@ import { TaskTable } from "./components/TaskTable";
 import { Container } from "./components/Container";
 
 function App() {
-  const [userName, setUserName] = useState("Fazt");
+  const [userName, setUserName] = useState("Alex");
   const [taskItems, setTaskItems] = useState([]);
   const [showCompleted, setshowCompleted] = useState(false);
 
@@ -15,17 +15,22 @@ function App() {
     if (data) {
       setTaskItems(JSON.parse(data));
     }
-    setUserName("fazt");
+    setUserName("Alex");
   }, []);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(taskItems));
   }, [taskItems]);
 
-  const createNewTask = (taskName) => {
-    if (!taskItems.find((t) => t.name === taskName))
-      setTaskItems([...taskItems, { name: taskName, done: false }]);
+  const createNewTask = (taskName, taskDescription, taskDate) => {
+    if (!taskItems.find((t) => t.name === taskName)) {
+      setTaskItems([
+        ...taskItems,
+        { name: taskName, description: taskDescription, date: taskDate, done: false }
+      ]);
+    }
   };
+  
 
   const toggleTask = (task) =>
     setTaskItems(
@@ -37,9 +42,12 @@ function App() {
     setshowCompleted(false);
   };
 
+  const [darkMode, setDarkMode] = useState(false);
+
+
   return (
-    <main className="bg-dark vh-100 text-white">
-      <TaskBanner userName={userName} taskItems={taskItems} />
+    <main className={`vh-100 text-white ${darkMode ? "bg-dark" : "bg-light"}`}>
+      <TaskBanner userName={userName} taskItems={taskItems} darkMode={darkMode} setDarkMode={setDarkMode} />
       <Container>
         <TaskCreator createNewTask={createNewTask} />
         <TaskTable tasks={taskItems} toggleTask={toggleTask} />
@@ -57,8 +65,14 @@ function App() {
           />
         )}
       </Container>
+      <div className="text-center mt-3">
+        <button className="btn btn-sm btn-secondary" onClick={() => setDarkMode(!darkMode)}>
+          Toggle Dark Mode
+        </button>
+      </div>
     </main>
   );
+  
 }
 
 export default App;
