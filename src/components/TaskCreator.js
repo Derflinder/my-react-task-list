@@ -1,14 +1,20 @@
 import React, { useState } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 
 export const TaskCreator = ({ createNewTask }) => {
   const [newTaskName, setNewTaskName] = useState("");
   const [newTaskDescription, setNewTaskDescription] = useState("");
-  const [newTaskDate, setNewTaskDate] = useState(""); // Agregamos el estado para la fecha
+  const [newTaskDate, setNewTaskDate] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newTaskName.trim() === "") {
-      alert("Please enter a task name");
+    if (newTaskName.trim().length < 3) {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000); // Ocultar la alerta después de 3 segundos
       return;
     }
 
@@ -53,6 +59,15 @@ export const TaskCreator = ({ createNewTask }) => {
           Save Task
         </button>
       </div>
+      {showAlert && (
+        <TransitionGroup className="alert-container">
+          <CSSTransition classNames="alert" timeout={300}>
+            <div className="alert alert-danger">
+              Task name should have at least 3 characters
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
+      )}
     </form>
   );
 };
