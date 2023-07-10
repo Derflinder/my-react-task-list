@@ -8,7 +8,7 @@ import useTaskActions from "./Hooks/useTaskActions";
 
 
 function App() {
-  
+  const [userName, setUserName] = useState("Alex");
   const { taskItems, createTask, deleteTask, editTask } = useTaskActions();
   const [showCompleted, setShowCompleted] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
