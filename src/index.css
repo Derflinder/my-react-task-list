@@ -1,3 +1,6 @@
+/* index.css */
+
+/* Estilo base del body */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +8,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f2f2f2; /* Cambia el color de fondo a gris claro (#f2f2f2) */
+  transition: background-color 0.5s ease; /* Agregamos una transición */
 }
 
+/* Estilo para los elementos code */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Agregamos estilos adicionales para la animación */
+/* Cuando el cursor pasa sobre el body */
+body:hover {
+  background-color: #e5e5e5; /* Cambia el color de fondo al pasar el cursor */
 }
