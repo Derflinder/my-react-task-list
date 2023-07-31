@@ -41,7 +41,7 @@ function App() {
 
   return (
     <Router>
-        <VideoBackground videoSrc="/videos/video.mp4.mp4" />
+        <VideoBackground videoSrc="/videos/fondo.mp4" />
         <main className="vh-100">
         <TaskBanner
           userName={userName}
