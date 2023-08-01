@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SobreNosotros = () => {
   return (
-    <div>
+    <div className="about-us">
       <h2>Sobre Nosotros</h2>
       <p>
         ¡Bienvenido a nuestra aplicación! Esta es una aplicación que te permite administrar tus tareas diarias. Puedes agregar nuevas tareas con fecha si asi lo deseas, marcarlas como completadas, eliminar tareas y cambiar entre el modo claro y oscuro para una mejor experiencia de usuario.
@@ -15,10 +15,11 @@ const SobreNosotros = () => {
         Esperamos que disfrutes utilizando nuestra aplicación y que te sea útil para organizar tus tareas y mantener un estilo de vida productivo y saludable.
       </p>
       <Link to="/lista-de-tareas" className="cta-button">
-          Siguiente
-        </Link>
+        Siguiente
+      </Link>
     </div>
   );
 };
 
 export default SobreNosotros;
+
